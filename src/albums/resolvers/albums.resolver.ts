@@ -7,38 +7,37 @@ import { UpdateAlbumInput } from '../dto/update-album';
 export class AlbumsResolver {
   constructor(private readonly albumsService: AlbumsService) {}
 
-  @Query(() => Album, { name: 'album' })
-  async getAlbumByID(@Args('id') id: string) {
-    return this.albumsService.findOne(id);
+  @Query('album')
+  async getByID(@Args('id') id: string) {
+    return this.albumsService.getByID(id);
   }
 
-  @Query(() => [Album], { name: 'albums', nullable: 'itemsAndList' })
-  async getAlbums(
+  @Query('albums')
+  async getAll(
     @Args('limit', { nullable: true }) limit?: number,
     @Args('offset', { nullable: true }) offset?: number,
   ) {
-    return this.albumsService.findAll(limit, offset);
+    return this.albumsService.getAll(limit, offset);
   }
 
-  @Mutation(() => Album)
-  async createAlbum(
+  @Mutation('createAlbum')
+  async create(
     @Args('createAlbumInput') createAlbumInput: CreateAlbumInput,
     @Context('token') token: string,
   ) {
     return this.albumsService.create(createAlbumInput, token);
   }
 
-  @Mutation()
-  async updateAlbum(
+  @Mutation('updateAlbum')
+  async update(
     @Args('updateAlbumInput') updateAlbumInput: UpdateAlbumInput,
     @Context('token') token: string,
   ) {
-    const id = updateAlbumInput._id;
-    return this.albumsService.update(id, updateAlbumInput, token);
+    return this.albumsService.update(updateAlbumInput, token);
   }
 
-  @Mutation()
-  async deleteAlbum(@Args('id') id: string, @Context('token') token: string) {
+  @Mutation('deleteAlbum')
+  async delete(@Args('id') id: string, @Context('token') token: string) {
     return this.albumsService.delete(id, token);
   }
 }

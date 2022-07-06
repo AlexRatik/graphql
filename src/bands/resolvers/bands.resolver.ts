@@ -8,37 +8,37 @@ import { BandsService } from '../services/bands.service';
 export class BandsResolver {
   constructor(private bandsService: BandsService) {}
 
-  @Query(() => [Band], { name: 'bands' })
-  async getAllBands(
+  @Query('bands')
+  async getAll(
     @Args('limit', { nullable: true }) limit?: number,
     @Args('offset', { nullable: true }) offset?: number,
   ) {
-    return this.bandsService.getAllBands(limit, offset);
+    return this.bandsService.getAll(limit, offset);
   }
 
-  @Query(() => Band, { name: 'band' })
-  async getBandByID(@Args('id') id: string) {
-    return this.bandsService.getBandByID(id);
+  @Query('band')
+  async getByID(@Args('id') id: string) {
+    return this.bandsService.getByID(id);
   }
 
-  @Mutation(() => Band)
-  async createBand(
+  @Mutation('createBand')
+  async create(
     @Args('createBandInput') createBandInput: CreateBandInput,
     @Context('token') token: string,
   ) {
-    return this.bandsService.createBand(createBandInput, token);
+    return this.bandsService.create(createBandInput, token);
   }
 
-  @Mutation(() => Band)
-  async updateBand(
+  @Mutation('updateBand')
+  async update(
     @Args('updateBandInput') updateBandInput: UpdateBandInput,
     @Context('token') token: string,
   ) {
-    return this.bandsService.updateBand(updateBandInput, token);
+    return this.bandsService.update(updateBandInput, token);
   }
 
-  @Mutation()
-  async deleteBand(@Args('id') id: string, @Context('token') token: string) {
-    return this.bandsService.deleteBand(id, token);
+  @Mutation('deleteBand')
+  async delete(@Args('id') id: string, @Context('token') token: string) {
+    return this.bandsService.delete(id, token);
   }
 }

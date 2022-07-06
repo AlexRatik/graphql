@@ -9,36 +9,36 @@ export class ArtistsResolver {
   constructor(private artistService: ArtistsService) {}
 
   @Query('artist')
-  async getArtistByID(@Args('id') id: string) {
-    return this.artistService.getArtistByID(id);
+  async getByID(@Args('id') id: string) {
+    return this.artistService.getByID(id);
   }
 
   @Query('artists')
-  async getAllArtists(
+  async getAll(
     @Args('limit', { nullable: true }) limit?: number,
     @Args('offset', { nullable: true }) offset?: number,
   ) {
-    return this.artistService.getAllArtists(limit, offset);
+    return this.artistService.getAll(limit, offset);
   }
 
-  @Mutation(() => Artist)
-  async createArtist(
+  @Mutation('createArtist')
+  async create(
     @Args('createArtistInput') createArtistInput: CreateArtistInput,
     @Context('token') token: string,
   ) {
-    return this.artistService.createArtist(createArtistInput, token);
+    return this.artistService.create(createArtistInput, token);
   }
 
-  @Mutation(() => Artist)
-  async updateArtist(
+  @Mutation('updateArtist')
+  async update(
     @Args('updateArtistInput') updateArtistInput: UpdateArtistInput,
     @Context('token') token: string,
   ) {
-    return this.artistService.updateArtist(updateArtistInput, token);
+    return this.artistService.update(updateArtistInput, token);
   }
 
-  @Mutation()
-  async deleteArtist(@Args('id') id: string, @Context('token') token: string) {
-    return this.artistService.deleteArtist(id, token);
+  @Mutation('deleteArtist')
+  async delete(@Args('id') id: string, @Context('token') token: string) {
+    return this.artistService.delete(id, token);
   }
 }

@@ -9,12 +9,12 @@ export class AlbumsService {
     this.microServer = axios.create({ baseURL: process.env.ALBUMS_URL });
   }
 
-  async findOne(id: string) {
+  async getByID(id: string) {
     const response = await this.microServer.get(`/${id}`);
     return response.data;
   }
 
-  async findAll(limit?: number, offset?: number) {
+  async getAll(limit?: number, offset?: number) {
     let queryString = '';
     if (limit || offset) {
       queryString = `?limit=${limit}&offset=${offset}`;
@@ -33,7 +33,9 @@ export class AlbumsService {
     return response.data;
   }
 
-  async update(id: string, updateAlbumInput: UpdateAlbumInput, token: string) {
+  async update(updateAlbumInput: UpdateAlbumInput, token: string) {
+    const data = { ...updateAlbumInput };
+    const id = data._id;
     const response = await this.microServer.put(`/${id}`, updateAlbumInput, {
       headers: {
         Authorization: token,

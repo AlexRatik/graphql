@@ -11,12 +11,12 @@ export class ArtistsService {
     this.microServer = axios.create({ baseURL: process.env.ARTISTS_URL });
   }
 
-  async getArtistByID(id: string) {
+  async getByID(id: string) {
     const response = await this.microServer.get(`/${id}`);
     return response.data;
   }
 
-  async getAllArtists(limit: number, offset: number) {
+  async getAll(limit: number, offset: number) {
     let queryString = '';
     if (limit || offset) {
       queryString = `?limit=${limit}&offset=${offset}`;
@@ -25,7 +25,7 @@ export class ArtistsService {
     return response.data.items;
   }
 
-  async createArtist(createArtistInput: CreateArtistInput, token: string) {
+  async create(createArtistInput: CreateArtistInput, token: string) {
     const data = { ...createArtistInput };
     const response = await this.microServer.post('/', data, {
       headers: {
@@ -35,7 +35,7 @@ export class ArtistsService {
     return response.data;
   }
 
-  async updateArtist(updateArtistInput: UpdateArtistInput, token: string) {
+  async update(updateArtistInput: UpdateArtistInput, token: string) {
     const data = { ...updateArtistInput };
     const id = data._id;
     const response = await this.microServer.put(`/${id}`, data, {
@@ -46,7 +46,7 @@ export class ArtistsService {
     return response.data;
   }
 
-  async deleteArtist(id: string, token: string) {
+  async delete(id: string, token: string) {
     const response = await this.microServer.delete(`/${id}`, {
       headers: {
         Authorization: token,

@@ -12,7 +12,7 @@ export class BandsService {
     });
   }
 
-  async getAllBands(limit: number, offset: number) {
+  async getAll(limit: number, offset: number) {
     let queryString = '';
     if (limit || offset) {
       queryString = `?limit=${limit}&offset=${offset}`;
@@ -21,12 +21,12 @@ export class BandsService {
     return response.data.items;
   }
 
-  async getBandByID(id: string) {
+  async getByID(id: string) {
     const response = await this.microServer.get(`/${id}`);
     return response.data;
   }
 
-  async createBand(createBandInput: CreateBandInput, token: string) {
+  async create(createBandInput: CreateBandInput, token: string) {
     const data = { ...createBandInput };
     const response = await this.microServer.post('', data, {
       headers: {
@@ -36,7 +36,7 @@ export class BandsService {
     return response.data;
   }
 
-  async updateBand(updateBandInput: UpdateBandInput, token: string) {
+  async update(updateBandInput: UpdateBandInput, token: string) {
     const data = { ...updateBandInput };
     const id = data._id;
     const response = await this.microServer.put(`/${id}`, data, {
@@ -46,7 +46,7 @@ export class BandsService {
     });
     return response.data;
   }
-  async deleteBand(id: string, token: string) {
+  async delete(id: string, token: string) {
     const response = await this.microServer.delete(`/${id}`, {
       headers: {
         authorization: token,
