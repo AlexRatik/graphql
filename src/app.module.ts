@@ -6,6 +6,7 @@ import { UsersModule } from './users/users.module';
 import { ConfigModule } from '@nestjs/config';
 import { AlbumModule } from './albums/albums.module';
 import { ArtistsModule } from './artists/artists.module';
+import { BandsModule } from './bands/bands.module';
 
 @Module({
   imports: [
@@ -23,6 +24,7 @@ import { ArtistsModule } from './artists/artists.module';
     }),
     UsersModule,
     ArtistsModule,
+    BandsModule,
     AlbumModule,
   ],
 })

@@ -1,4 +1,4 @@
 type Delete {
   acknowledged: Boolean
-  deleteCount: Int
+  deletedCount: Int
 }

@@ -51,6 +51,29 @@ export interface UpdateArtistInput {
     instruments?: Nullable<Nullable<string>[]>;
 }
 
+export interface CreateBandInput {
+    name: string;
+    origin?: Nullable<string>;
+    members?: Nullable<Nullable<MemberInput>[]>;
+    website?: Nullable<string>;
+    genresIds?: Nullable<Nullable<string>[]>;
+}
+
+export interface UpdateBandInput {
+    _id: string;
+    name?: Nullable<string>;
+    origin?: Nullable<string>;
+    members?: Nullable<Nullable<MemberInput>[]>;
+    website?: Nullable<string>;
+    genresIds?: Nullable<Nullable<string>[]>;
+}
+
+export interface MemberInput {
+    artist?: Nullable<string>;
+    instrument?: Nullable<string>;
+    years?: Nullable<Nullable<string>[]>;
+}
+
 export interface CreateUserInput {
     firstName: string;
     lastName: string;
@@ -97,6 +120,9 @@ export interface IMutation {
     createArtist(createArtistInput: CreateArtistInput): Artist | Promise<Artist>;
     deleteArtist(id: string): Nullable<Delete> | Promise<Nullable<Delete>>;
     updateArtist(updateArtistInput: UpdateArtistInput): Artist | Promise<Artist>;
+    createBand(createBandInput: CreateBandInput): Band | Promise<Band>;
+    updateBand(updateBandInput: UpdateBandInput): Band | Promise<Band>;
+    deleteBand(id: string): Nullable<Delete> | Promise<Nullable<Delete>>;
     register(createUserInput: CreateUserInput): User | Promise<User>;
 }
 
@@ -113,17 +139,23 @@ export interface Artist {
 }
 
 export interface Band {
-    id: string;
+    _id: string;
     name?: Nullable<string>;
     origin?: Nullable<string>;
-    members?: Nullable<Nullable<string>[]>;
+    members?: Nullable<Nullable<Member>[]>;
     website?: Nullable<string>;
     genres?: Nullable<string>;
 }
 
+export interface Member {
+    artist?: Nullable<string>;
+    instrument?: Nullable<string>;
+    years?: Nullable<Nullable<string>[]>;
+}
+
 export interface Delete {
     acknowledged?: Nullable<boolean>;
-    deleteCount?: Nullable<number>;
+    deletedCount?: Nullable<number>;
 }
 
 export interface Favorites {
