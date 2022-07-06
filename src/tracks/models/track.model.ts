@@ -7,11 +7,11 @@ export class Track {
   @Field(() => ID)
   _id: string;
 
-  @Field(() => String, { nullable: true })
-  title?: string;
+  @Field(() => String)
+  title: string;
 
-  @Field(() => String, { nullable: true })
-  albums?: string;
+  @Field(() => ID)
+  albumId: string;
 
   @Field(() => [Band], { nullable: 'itemsAndList' })
   bands?: Band[];
