@@ -7,6 +7,7 @@ import { ConfigModule } from '@nestjs/config';
 import { AlbumModule } from './albums/albums.module';
 import { ArtistsModule } from './artists/artists.module';
 import { BandsModule } from './bands/bands.module';
+import { GenresModule } from './genres/genres.module';
 
 @Module({
   imports: [
@@ -22,10 +23,11 @@ import { BandsModule } from './bands/bands.module';
         token: req.headers.authorization,
       }),
     }),
-    UsersModule,
+    AlbumModule,
     ArtistsModule,
     BandsModule,
-    AlbumModule,
+    GenresModule,
+    UsersModule,
   ],
 })
 export class AppModule {}

@@ -1,12 +1,12 @@
-import { Field, ID, ObjectType, Int } from '@nestjs/graphql';
+import { Field, ID, InputType, Int } from '@nestjs/graphql';
 
-@ObjectType()
-export class Genre {
+@InputType()
+export class UpdateGenreInput {
   @Field(() => ID)
   _id: string;
 
-  @Field(() => String)
-  name: string;
+  @Field(() => String, { nullable: true })
+  name?: string;
 
   @Field(() => String, { nullable: true })
   description?: string;

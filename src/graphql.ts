@@ -74,6 +74,21 @@ export interface MemberInput {
     years?: Nullable<Nullable<string>[]>;
 }
 
+export interface CreateGenreInput {
+    name: string;
+    description?: Nullable<string>;
+    country?: Nullable<string>;
+    year?: Nullable<number>;
+}
+
+export interface UpdateGenreInput {
+    _id: string;
+    name?: Nullable<string>;
+    description?: Nullable<string>;
+    country?: Nullable<string>;
+    year?: Nullable<number>;
+}
+
 export interface CreateUserInput {
     firstName: string;
     lastName: string;
@@ -123,6 +138,9 @@ export interface IMutation {
     createBand(createBandInput: CreateBandInput): Band | Promise<Band>;
     updateBand(updateBandInput: UpdateBandInput): Band | Promise<Band>;
     deleteBand(id: string): Nullable<Delete> | Promise<Nullable<Delete>>;
+    createGenre(createGenreInput: CreateGenreInput): Genre | Promise<Genre>;
+    updateGenre(updateGenreInput: UpdateGenreInput): Genre | Promise<Genre>;
+    deleteGenre(id: string): Nullable<Delete> | Promise<Nullable<Delete>>;
     register(createUserInput: CreateUserInput): User | Promise<User>;
 }
 
@@ -168,8 +186,8 @@ export interface Favorites {
 }
 
 export interface Genre {
-    id: string;
-    name?: Nullable<string>;
+    _id: string;
+    name: string;
     description?: Nullable<string>;
     country?: Nullable<string>;
     year?: Nullable<number>;

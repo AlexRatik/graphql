@@ -1,10 +1,7 @@
-import { Field, ID, ObjectType, Int } from '@nestjs/graphql';
+import { Field, InputType, Int } from '@nestjs/graphql';
 
-@ObjectType()
-export class Genre {
-  @Field(() => ID)
-  _id: string;
-
+@InputType()
+export class CreateGenreInput {
   @Field(() => String)
   name: string;
 
