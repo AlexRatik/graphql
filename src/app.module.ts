@@ -5,6 +5,7 @@ import { join } from 'path';
 import { UsersModule } from './users/users.module';
 import { ConfigModule } from '@nestjs/config';
 import { AlbumModule } from './albums/albums.module';
+import { ArtistsModule } from './artists/artists.module';
 
 @Module({
   imports: [
@@ -21,6 +22,7 @@ import { AlbumModule } from './albums/albums.module';
       }),
     }),
     UsersModule,
+    ArtistsModule,
     AlbumModule,
   ],
 })

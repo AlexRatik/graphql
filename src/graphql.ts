@@ -28,6 +28,29 @@ export interface UpdateAlbumInput {
     image?: Nullable<string>;
 }
 
+export interface CreateArtistInput {
+    firstName: string;
+    secondName: string;
+    middleName?: Nullable<string>;
+    birthDate?: Nullable<string>;
+    birthPlace?: Nullable<string>;
+    country: string;
+    bands?: Nullable<Nullable<string>[]>;
+    instruments?: Nullable<Nullable<string>[]>;
+}
+
+export interface UpdateArtistInput {
+    _id: string;
+    firstName?: Nullable<string>;
+    secondName?: Nullable<string>;
+    middleName?: Nullable<string>;
+    birthDate?: Nullable<string>;
+    birthPlace?: Nullable<string>;
+    country?: Nullable<string>;
+    bands?: Nullable<Nullable<string>[]>;
+    instruments?: Nullable<Nullable<string>[]>;
+}
+
 export interface CreateUserInput {
     firstName: string;
     lastName: string;
@@ -71,19 +94,22 @@ export interface IMutation {
     createAlbum(createAlbumInput: CreateAlbumInput): Album | Promise<Album>;
     deleteAlbum(id: string): Nullable<Delete> | Promise<Nullable<Delete>>;
     updateAlbum(updateAlbumInput?: Nullable<UpdateAlbumInput>): Album | Promise<Album>;
+    createArtist(createArtistInput: CreateArtistInput): Artist | Promise<Artist>;
+    deleteArtist(id: string): Nullable<Delete> | Promise<Nullable<Delete>>;
+    updateArtist(updateArtistInput: UpdateArtistInput): Artist | Promise<Artist>;
     register(createUserInput: CreateUserInput): User | Promise<User>;
 }
 
 export interface Artist {
-    id: string;
-    firstName?: Nullable<string>;
-    secondName?: Nullable<string>;
+    _id: string;
+    firstName: string;
+    secondName: string;
     middleName?: Nullable<string>;
     birthDate?: Nullable<string>;
     birthPlace?: Nullable<string>;
-    country?: Nullable<string>;
+    country: string;
     bands?: Nullable<Nullable<string>[]>;
-    instruments?: Nullable<string>;
+    instruments?: Nullable<Nullable<string>[]>;
 }
 
 export interface Band {
