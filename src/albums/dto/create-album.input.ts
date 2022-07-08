@@ -1,9 +1,4 @@
 import { Field, InputType, Int } from '@nestjs/graphql';
-import { Artist } from 'src/artists/models/artist.model';
-import { Band } from 'src/bands/models/band.model';
-import { Genre } from 'src/genres/models/genre.model';
-import { Track } from 'src/tracks/models/track.model';
-
 @InputType()
 export class CreateAlbumInput {
   @Field(() => String, { nullable: true })
@@ -12,17 +7,17 @@ export class CreateAlbumInput {
   @Field(() => Int, { nullable: true })
   released?: number;
 
-  @Field(() => [Artist], { nullable: 'itemsAndList' })
-  artists?: Artist[];
+  @Field(() => [String], { nullable: 'itemsAndList' })
+  artists?: string[];
 
-  @Field(() => [Band], { name: 'bands', nullable: 'itemsAndList' })
-  bands?: Band[];
+  @Field(() => [String], { nullable: 'itemsAndList' })
+  bands?: string[];
 
-  @Field(() => [Genre], { name: 'genres', nullable: 'itemsAndList' })
-  genres?: Genre[];
+  @Field(() => [String], { nullable: 'itemsAndList' })
+  genres?: string[];
 
-  @Field(() => [Track], { name: 'tracks', nullable: 'itemsAndList' })
-  tracks?: Track[];
+  @Field(() => [String], { nullable: 'itemsAndList' })
+  tracks?: string[];
 
   @Field(() => String, { nullable: true })
   image?: string;

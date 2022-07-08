@@ -24,7 +24,7 @@ export class Artist {
   country?: string;
 
   @Field(() => [ID], { name: 'bands', nullable: 'itemsAndList' })
-  bandsIDs?: string[];
+  bands?: string[];
 
   @Field(() => String, { nullable: true })
   instruments?: string;

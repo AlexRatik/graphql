@@ -36,8 +36,6 @@ export class FavouritesResolver {
     @Args('addToFavouritesInput') addToFavouritesInput: AddToFavouritesInput,
     @Context('token') token: string,
   ) {
-    console.log(addToFavouritesInput);
-
     return this.favouritesService.add(addToFavouritesInput, token);
   }
 

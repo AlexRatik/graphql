@@ -4,7 +4,7 @@ type Band {
   origin: String
   members: [Member]
   website: String
-  genres: String
+  genres: [Genre]
 }
 
 type Member {
@@ -15,7 +15,7 @@ type Member {
 
 type Query {
   bands(limit: Int, offset: Int): [Band]
-  band(id: ID!): Band
+  band(id: ID!): Band!
 }
 
 input CreateBandInput {

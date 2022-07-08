@@ -23,10 +23,10 @@ type Mutation {
 input CreateAlbumInput {
   name: String!
   released: Int
-  artists: [ID]
-  bands: [ID]
-  tracks: [ID]
-  genres: [ID]
+  artistsIds: [ID]
+  bandsIds: [ID]
+  trackIds: [ID]
+  genresIds: [ID]
   image: String
 }
 
@@ -34,9 +34,9 @@ input UpdateAlbumInput {
   _id: ID!
   name: String
   released: Int
-  artists: [ID]
-  bands: [ID]
-  tracks: [ID]
-  genres: [ID]
+  artistsIds: [ID]
+  bandsIds: [ID]
+  trackIds: [ID]
+  genresIds: [ID]
   image: String
 }

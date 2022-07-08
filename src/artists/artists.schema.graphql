@@ -1,18 +1,18 @@
 type Artist {
   _id: ID!
-  firstName: String!
-  secondName: String!
+  firstName: String
+  secondName: String
   middleName: String
   birthDate: String
   birthPlace: String
   country: String!
-  bands: [ID]
+  bands: [Band]
   instruments: [String]
 }
 
 type Query {
   artists(limit: Int, offset: Int): [Artist]
-  artist(id: ID!): Artist
+  artist(id: ID!): Artist!
 }
 
 type Mutation {
@@ -28,7 +28,7 @@ input CreateArtistInput {
   birthDate: String
   birthPlace: String
   country: String!
-  bands: [ID]
+  bands: [ID!]
   instruments: [String]
 }
 
@@ -40,6 +40,6 @@ input UpdateArtistInput {
   birthDate: String
   birthPlace: String
   country: String
-  bands: [ID]
+  bandsIds: [ID!]
   instruments: [String]
 }

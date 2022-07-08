@@ -5,8 +5,8 @@ export class CreateTrackInput {
   @Field(() => String)
   title: string;
 
-  @Field(() => ID)
-  albumId: string;
+  @Field(() => ID, { nullable: true })
+  albumId?: string;
 
   @Field(() => [ID], { nullable: 'itemsAndList' })
   bandsIds?: string[];

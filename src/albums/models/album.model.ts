@@ -1,9 +1,4 @@
 import { Field, ObjectType, ID, Int } from '@nestjs/graphql';
-import { Artist } from 'src/artists/models/artist.model';
-import { Band } from 'src/bands/models/band.model';
-import { Genre } from 'src/genres/models/genre.model';
-import { Track } from 'src/tracks/models/track.model';
-
 @ObjectType()
 export class Album {
   @Field(() => ID)
@@ -15,17 +10,17 @@ export class Album {
   @Field(() => Int, { nullable: true })
   released?: number;
 
-  @Field(() => [Artist], { nullable: 'itemsAndList' })
-  artists?: Artist[];
+  @Field(() => [String], { nullable: 'itemsAndList' })
+  artistsIds?: string[];
 
-  @Field(() => [Band], { name: 'bands', nullable: 'itemsAndList' })
-  bands?: Band[];
+  @Field(() => [String], { name: 'bands', nullable: 'itemsAndList' })
+  bandsIds?: string[];
 
-  @Field(() => [Genre], { name: 'genres', nullable: 'itemsAndList' })
-  genres?: Genre[];
+  @Field(() => [String], { name: 'genres', nullable: 'itemsAndList' })
+  genresIds?: string[];
 
-  @Field(() => [Track], { name: 'tracks', nullable: 'itemsAndList' })
-  tracks?: Track[];
+  @Field(() => [String], { name: 'tracks', nullable: 'itemsAndList' })
+  trackIds?: string[];
 
   @Field(() => String, { nullable: true })
   image?: string;

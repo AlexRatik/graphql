@@ -6,8 +6,8 @@ export class Band {
   @Field(() => ID)
   _id: string;
 
-  @Field(() => String)
-  name: string;
+  @Field(() => String, { nullable: true })
+  name?: string;
 
   @Field(() => String, { nullable: true })
   origin?: string;
@@ -19,5 +19,5 @@ export class Band {
   website?: string;
 
   @Field(() => [String], { nullable: 'itemsAndList' })
-  genresIDs?: string[];
+  genresIds?: string[];
 }

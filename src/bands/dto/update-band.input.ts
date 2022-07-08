@@ -20,5 +20,5 @@ export class UpdateBandInput {
   website?: string;
 
   @Field(() => [String], { nullable: 'itemsAndList' })
-  genresIds?: string[];
+  genres?: string[];
 }

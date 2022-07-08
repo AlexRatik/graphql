@@ -24,7 +24,7 @@ export class UpdateArtistInput {
   country: string;
 
   @Field(() => [ID], { nullable: 'itemsAndList' })
-  bands: string[];
+  bandsIds: string[];
 
   @Field(() => [String], { nullable: 'itemsAndList' })
   instruments: string[];
