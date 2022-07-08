@@ -1,0 +1,30 @@
+type Favourite {
+  _id: ID!
+  userId: ID!
+  bands: [Band]
+  genres: [Genre]
+  artists: [Artist]
+  tracks: [Track]
+}
+
+type Query {
+  favourites: Favourite
+}
+
+input AddToFavouritesInput {
+  type: String!
+  id: ID!
+}
+
+input RemoveFromFavouritesInput {
+  type: String!
+  id: ID!
+}
+
+type Mutation {
+  addToFavourites(addToFavouritesInput: AddToFavouritesInput!): Favourite!
+  removeFromFavourites(
+    removeFromFavouritesInput: RemoveFromFavouritesInput!
+  ): Favourite!
+  deleteFavourite(id: ID!): Delete
+}

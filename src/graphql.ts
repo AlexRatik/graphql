@@ -74,6 +74,16 @@ export interface MemberInput {
     years?: Nullable<Nullable<string>[]>;
 }
 
+export interface AddToFavouritesInput {
+    type: string;
+    id: string;
+}
+
+export interface RemoveFromFavouritesInput {
+    type: string;
+    id: string;
+}
+
 export interface CreateGenreInput {
     name: string;
     description?: Nullable<string>;
@@ -140,7 +150,7 @@ export interface IQuery {
     artist(id: string): Nullable<Artist> | Promise<Nullable<Artist>>;
     bands(limit?: Nullable<number>, offset?: Nullable<number>): Nullable<Nullable<Band>[]> | Promise<Nullable<Nullable<Band>[]>>;
     band(id: string): Nullable<Band> | Promise<Nullable<Band>>;
-    favorites(limit?: Nullable<number>, offset?: Nullable<number>): Nullable<Nullable<Favorites>[]> | Promise<Nullable<Nullable<Favorites>[]>>;
+    favourites(): Nullable<Favourite> | Promise<Nullable<Favourite>>;
     genres(limit?: Nullable<number>, offset?: Nullable<number>): Nullable<Nullable<Genre>[]> | Promise<Nullable<Nullable<Genre>[]>>;
     genre(id: string): Nullable<Genre> | Promise<Nullable<Genre>>;
     tracks(limit?: Nullable<number>, offset?: Nullable<number>): Nullable<Nullable<Track>[]> | Promise<Nullable<Nullable<Track>[]>>;
@@ -159,6 +169,9 @@ export interface IMutation {
     createBand(createBandInput: CreateBandInput): Band | Promise<Band>;
     updateBand(updateBandInput: UpdateBandInput): Band | Promise<Band>;
     deleteBand(id: string): Nullable<Delete> | Promise<Nullable<Delete>>;
+    addToFavourites(addToFavouritesInput: AddToFavouritesInput): Favourite | Promise<Favourite>;
+    removeFromFavourites(removeFromFavouritesInput: RemoveFromFavouritesInput): Favourite | Promise<Favourite>;
+    deleteFavourite(id: string): Nullable<Delete> | Promise<Nullable<Delete>>;
     createGenre(createGenreInput: CreateGenreInput): Genre | Promise<Genre>;
     updateGenre(updateGenreInput: UpdateGenreInput): Genre | Promise<Genre>;
     deleteGenre(id: string): Nullable<Delete> | Promise<Nullable<Delete>>;
@@ -200,13 +213,13 @@ export interface Delete {
     deletedCount?: Nullable<number>;
 }
 
-export interface Favorites {
-    id: string;
-    userId?: Nullable<string>;
-    bands?: Nullable<Nullable<string>[]>;
-    genres?: Nullable<Nullable<string>[]>;
-    artists?: Nullable<Nullable<string>[]>;
-    tracks?: Nullable<Nullable<string>[]>;
+export interface Favourite {
+    _id: string;
+    userId: string;
+    bands?: Nullable<Nullable<Band>[]>;
+    genres?: Nullable<Nullable<Genre>[]>;
+    artists?: Nullable<Nullable<Artist>[]>;
+    tracks?: Nullable<Nullable<Track>[]>;
 }
 
 export interface Genre {

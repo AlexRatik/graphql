@@ -9,6 +9,7 @@ import { ArtistsModule } from './artists/artists.module';
 import { BandsModule } from './bands/bands.module';
 import { GenresModule } from './genres/genres.module';
 import { TracksModule } from './tracks/tracks.module';
+import { FavouritesModule } from './favourites/favourites.module';
 
 @Module({
   imports: [
@@ -29,6 +30,7 @@ import { TracksModule } from './tracks/tracks.module';
     BandsModule,
     GenresModule,
     TracksModule,
+    FavouritesModule,
     UsersModule,
   ],
 })
